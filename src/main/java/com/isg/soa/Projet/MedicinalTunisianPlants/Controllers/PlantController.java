@@ -40,6 +40,7 @@ public class PlantController {
         return plant.map(response -> ResponseEntity.ok().body(response))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    //plant
 
     @GetMapping("/plantByName/{Name}")
     public Collection<Plant> getPlantByName(@PathVariable String Name){
