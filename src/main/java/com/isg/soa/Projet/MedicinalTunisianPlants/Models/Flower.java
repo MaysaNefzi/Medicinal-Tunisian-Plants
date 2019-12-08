@@ -24,10 +24,15 @@ public class Flower extends Product{
      )
     private Set<Use>UsesOfFlower = new HashSet<>();
 
-    public Flower(@NotNull String name, @NotNull double price, Set<Order> orders, String smell, Plant plant, Set<Use> usesOfFlower) {
+
+    @OneToMany(mappedBy = "flower",cascade = CascadeType.ALL)
+    private Set<Photo> Photos = new HashSet<>();
+
+    public Flower(@NotNull String name, @NotNull double price, Set<Photo> photos,Set<Order> orders, String smell, Plant plant, Set<Use> usesOfFlower) {
         super(name, price, orders);
         Smell = smell;
         this.plant = plant;
         UsesOfFlower = usesOfFlower;
+        Photos = photos;
     }
 }

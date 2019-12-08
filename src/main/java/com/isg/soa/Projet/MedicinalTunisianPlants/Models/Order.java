@@ -28,6 +28,10 @@ public class Order {
     )
     private Set<Product> Products=new HashSet<>();
 
+    @ManyToOne
+    @JoinColumn(name="Customer_Code")
+    private Customer customer;
+
     public Order(@NotNull LocalDate date, Set<Product> products) {
         Date = date;
         Products = products;

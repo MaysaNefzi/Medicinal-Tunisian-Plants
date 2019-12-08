@@ -85,24 +85,11 @@ public class CustomerController {
         C1.setLogin(customer.getLogin());
         C1.setPassword(customer.getPassword());
         C1.setProfile(customer.getProfile());
-
-        // repository.deleteById(id); //with this instruction a new id will be generated
+        // Fdidelite
+        C1.Fidelite(C1.getCoeff_Fid());
         Customer result = C_repo.save(C1);
 
-        //return ResponseEntity.noContent().build();
         return ResponseEntity.ok().body(result);
-//        Toy toyCopy = new Toy();
-//        BeanUtils.copyProperties(toy, toyCopy);
-//        ToyService.updateToy(toy);
-//
-//        Toy ob = new Toy();
-//        BeanUtils.copyProperties(toyCopy, ob);
-//        return new ResponseEntity<Toy>(ob, HttpStatus.OK);
-//
-//
-//        BeanUtils.copyProperties(toy, toyc);
-//        Toy result = repository.save(toy);
-//        return ResponseEntity.ok().body(result);
     }
 
 }

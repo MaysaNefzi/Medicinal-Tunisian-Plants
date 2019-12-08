@@ -14,8 +14,6 @@ import java.util.*;
 public class Plant extends Product {
     private String Origin;
     private String Description;
-    //private Set<String> Colors = new HashSet<>();
-   // private String Colors;
 
     public Plant(@NotNull String name, @NotNull double price, Set<Order> orders, String origin, String description, Set<Photo> photos, Set<Use> usesOfPlant, Flower flower, Set<Color> colors) {
         super(name, price, orders);
@@ -27,10 +25,11 @@ public class Plant extends Product {
         Colors = colors;
     }
 
+
     @OneToMany(mappedBy = "plant",cascade = CascadeType.ALL)
     private Set<Photo> Photos = new HashSet<>();
-    //private Set<String> Photos= new HashSet<>();
-    //private String Photos;
+
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name="Plant_Used_In",
             joinColumns =
