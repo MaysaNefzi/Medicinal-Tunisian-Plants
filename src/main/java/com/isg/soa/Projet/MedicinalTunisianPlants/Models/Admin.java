@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class Admin {
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
     private String name;
     private String firstName;
     private String login;
@@ -26,11 +26,11 @@ public class Admin {
     public Admin() {
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

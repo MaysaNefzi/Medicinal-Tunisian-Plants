@@ -1,8 +1,7 @@
 package com.isg.soa.Projet.MedicinalTunisianPlants.Controllers;
 
 import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Customer;
-import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Flower;
-import com.isg.soa.Projet.MedicinalTunisianPlants.Repositories.CustomerRpository;
+import com.isg.soa.Projet.MedicinalTunisianPlants.Repositories.CustomerRepository;
     import org.slf4j.Logger;
     import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +24,9 @@ import java.util.stream.Collectors;
 public class CustomerController {
     private final Logger log = LoggerFactory.getLogger(CustomerController.class);
     @Autowired
-    private final CustomerRpository C_repo;
+    private final CustomerRepository C_repo;
 
-    public CustomerController(CustomerRpository c_repo) {
+    public CustomerController(CustomerRepository c_repo) {
         C_repo = c_repo;
     }
 
@@ -68,7 +67,6 @@ public class CustomerController {
 
 
     @PutMapping("/updateCustomer/{code}")
-
     public ResponseEntity<Customer> updateCustomer(@Valid @RequestBody Customer customer, @PathVariable("code") long code) {
         log.info("Request for updating new Customer {}", customer);
 
