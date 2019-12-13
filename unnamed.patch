@@ -1,0 +1,17 @@
+Index: src/main/java/com/isg/soa/Projet/MedicinalTunisianPlants/Controllers/CustomerController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/main/java/com/isg/soa/Projet/MedicinalTunisianPlants/Controllers/CustomerController.java	(revision 0d3a8e2f230f5f5c8984e35e075de9d837483396)
++++ src/main/java/com/isg/soa/Projet/MedicinalTunisianPlants/Controllers/CustomerController.java	(date 1575414346343)
+@@ -91,8 +91,8 @@
+         return ResponseEntity.ok().body(result);
+ 
+     }
++    /*1111111111*/
+     @DeleteMapping("/deleteCustomer/{code}")
+-
+     public Map<String, Boolean> deleteCustomer(@PathVariable Long code)
+             throws ResourceNotFoundException {
+         Customer C1 = C_repo.findById(code)

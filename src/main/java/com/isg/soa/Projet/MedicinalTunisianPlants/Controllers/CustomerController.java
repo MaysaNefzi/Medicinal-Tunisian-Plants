@@ -92,8 +92,8 @@ public class CustomerController {
         return ResponseEntity.ok().body(result);
 
     }
+    /*1111111111*/
     @DeleteMapping("/deleteCustomer/{code}")
-
     public Map<String, Boolean> deleteCustomer(@PathVariable Long code)
             throws ResourceNotFoundException {
         Customer C1 = C_repo.findById(code)
