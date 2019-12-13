@@ -3,8 +3,8 @@ package com.isg.soa.Projet.MedicinalTunisianPlants.Controllers;
 import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Customer;
 import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Flower;
 import com.isg.soa.Projet.MedicinalTunisianPlants.Repositories.CustomerRpository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+    import org.slf4j.Logger;
+    import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
@@ -87,6 +87,7 @@ public class CustomerController {
         C1.setLogin(customer.getLogin());
         C1.setPassword(customer.getPassword());
         C1.setProfile(customer.getProfile());
+        C1.Fidelite(C1.getCoeff_Fid());
         Customer result = C_repo.save(C1);
         return ResponseEntity.ok().body(result);
 

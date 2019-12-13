@@ -18,6 +18,9 @@ public class Photo {
     @ManyToOne
     @JoinColumn(name="Plant_id")
     private Plant plant;
+    @ManyToOne
+    @JoinColumn(name="Flower_id")
+    private Flower flower ;
 
     public Photo(Long id, @NotNull String photo, Plant plant) {
         Id = id;

@@ -26,7 +26,10 @@ public class Customer {
     @JoinColumn(name = "Adress_Id")
     private Adress adress;
 
-    public Customer(@NotNull String name, String type, int coeff_Fid, Long phone, String email, String login, String password, @NotNull Profile profile, Adress adress) {
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
+    private Set<Order> Orders = new HashSet<>();
+
+    public Customer(@NotNull String name, String type, int coeff_Fid, Long phone, String email, String login, String password, com.isg.soa.Projet.MedicinalTunisianPlants.Models.@NotNull Profile profile, Adress adress, Set<Order> orders) {
         Name = name;
         Type = type;
         Coeff_Fid = coeff_Fid;
@@ -36,9 +39,17 @@ public class Customer {
         Password = password;
         Profile = profile;
         this.adress = adress;
+        Orders = orders;
     }
 
     public Customer() {
+    }
+    public String Fidelite (int Coeff){
+        String S="Not Loyal";
+        if (Coeff>=3) {
+            S =  "Loyal";
+        }
+        return S;
     }
 
     public Long getCode() {
