@@ -6,7 +6,6 @@ package com.isg.soa.Projet.MedicinalTunisianPlants.Models;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.*;
-
 @Entity
 @Table(name="Plant_table")
 public class Plant extends Product {

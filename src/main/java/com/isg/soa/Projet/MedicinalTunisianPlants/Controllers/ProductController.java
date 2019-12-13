@@ -27,7 +27,7 @@ public class ProductController {
         return Pr_repo.findAll();
     }
     @DeleteMapping("/removeProduct/{id}")
-    public ResponseEntity<?> deleteToy(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteProduct(@PathVariable("id") Long id) {
         log.info("request for removing product {}", id);
         Pr_repo.deleteById(id);
         return ResponseEntity.ok().build();

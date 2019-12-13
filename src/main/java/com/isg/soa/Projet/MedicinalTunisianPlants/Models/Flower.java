@@ -18,7 +18,7 @@ public class Flower extends Product{
             @JoinColumn(name="Flower_Id" , referencedColumnName = "Id"),
             inverseJoinColumns =
             @JoinColumn(name="Use_Id", referencedColumnName="Id")
-     )
+    )
     private Set<Use>UsesOfFlower = new HashSet<>();
     @OneToMany(mappedBy = "flower",cascade = CascadeType.ALL)
     private Set<Photo> Photos = new HashSet<>();
