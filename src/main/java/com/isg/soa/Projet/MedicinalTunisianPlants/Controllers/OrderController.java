@@ -16,7 +16,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Optional;
 import java.util.Set;
-
+@CrossOrigin(origins = "http://localhost:")
 @RestController
 @RequestMapping("/order")
 public class OrderController {

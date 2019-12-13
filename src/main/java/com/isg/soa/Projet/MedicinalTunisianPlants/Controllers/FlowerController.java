@@ -15,7 +15,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.*;
 import java.util.stream.Collectors;
-
+@CrossOrigin(origins = "http://localhost:")
 @RestController
 @RequestMapping("/flower")
 public class FlowerController {
