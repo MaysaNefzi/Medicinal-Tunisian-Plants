@@ -59,7 +59,7 @@ public class CustomerController {
 
     @PostMapping("/newCustomer")
     public ResponseEntity<Customer> addCustomer(@Valid @RequestBody Customer customer) throws URISyntaxException {
-        log.info("request for adding new customer ()", customer);
+        log.info("request for adding new customer()", customer);
         Customer result = C_repo.save(customer);
         return ResponseEntity.created(new URI("/newCustomer" + result.getCode())).body(result);
 
