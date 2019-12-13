@@ -1,7 +1,6 @@
 package com.isg.soa.Projet.MedicinalTunisianPlants.Controllers;
 
 import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Flower;
-import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Plant;
 import com.isg.soa.Projet.MedicinalTunisianPlants.Repositories.FlowerRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -80,5 +76,17 @@ public class FlowerController {
         response.put("deleted", Boolean.TRUE);
 
         return response;
+    }
+    @DeleteMapping("/removeFlowerByName/{Name}")
+    public ResponseEntity<?> deleteFlowerByName(@PathVariable("Name") String Name) {
+        log.info("Request for removing product {}", Name);
+        List<Flower> lstflowers = F_repo.findAll().stream()
+                .filter(x -> x.getName().equals(Name))
+                .collect(Collectors.toList());
+
+        for (Flower f : lstflowers)
+            F_repo.deleteById(f.getId());
+        return ResponseEntity.ok().build();
+
     }
 }

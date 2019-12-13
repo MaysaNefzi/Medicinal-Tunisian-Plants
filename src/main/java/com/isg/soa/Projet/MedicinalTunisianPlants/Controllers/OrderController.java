@@ -1,7 +1,8 @@
 package com.isg.soa.Projet.MedicinalTunisianPlants.Controllers;
 
+import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Flower;
 import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Order;
-import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Product;
+import com.isg.soa.Projet.MedicinalTunisianPlants.Models.Plant;
 import com.isg.soa.Projet.MedicinalTunisianPlants.Repositories.OrderRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,8 +32,10 @@ public class OrderController {
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @GetMapping("/allOrderproducts")
-    public Set<Product> getAllorderproducts(Order order){return (order.getProducts());}
+    @GetMapping("/allOrderflowers")
+    public Set<Flower> getAllorderflowers(Order order){return (order.getFlowers());}
+    @GetMapping("/allOrderplants")
+    public Set<Plant> getAllorderplants(Order order){return (order.getPlants());}
 
     @PostMapping("/newOrder")
     public ResponseEntity<Order> addOrder(@Valid @RequestBody Order order) throws URISyntaxException {
@@ -53,7 +56,8 @@ public class OrderController {
         Order O = orderOptional.get();
         O.setCode(order.getCode());
         O.setDate(order.getDate());
-        O.setProducts(order.getProducts());
+        O.setFlowers(order.getFlowers());
+        O.setPlants(order.getPlants());
 
         Order result = O_repo.save(O);
 

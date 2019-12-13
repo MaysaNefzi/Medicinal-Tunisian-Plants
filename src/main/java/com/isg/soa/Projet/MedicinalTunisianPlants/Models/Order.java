@@ -17,20 +17,30 @@ public class Order {
     private Long Code;
     private @NotNull LocalDate Date;
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Order_Line",
+    @JoinTable(name = "Order_Flower_Line",
             joinColumns =
             @JoinColumn (name = "Order_Code", referencedColumnName = "Code"),
             inverseJoinColumns =
-            @JoinColumn (name = "Product_Code", referencedColumnName = "Id")
+            @JoinColumn (name = "Flower_Code", referencedColumnName = "Id")
     )
-    private Set<Product> Products=new HashSet<>();
+    private Set<Flower> Flowers=new HashSet<>();
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Order_Plant_Line",
+            joinColumns =
+            @JoinColumn (name = "Order_Code", referencedColumnName = "Code"),
+            inverseJoinColumns =
+            @JoinColumn (name = "Plant_Code", referencedColumnName = "Id")
+    )
+    private Set<Plant> Plants=new HashSet<>();
     @ManyToOne
     @JoinColumn(name="Customer_Code")
     private Customer customer;
 
-    public Order(@NotNull LocalDate date, Set<Product> products) {
+    public Order(@NotNull LocalDate date, Set<Flower> flowers, Set<Plant> plants, Customer customer) {
         Date = date;
-        Products = products;
+        Flowers = flowers;
+        Plants = plants;
+        this.customer = customer;
     }
 
     public Order() {
@@ -52,12 +62,28 @@ public class Order {
         Date = date;
     }
 
-    public Set<Product> getProducts() {
-        return Products;
+    public Set<Flower> getFlowers() {
+        return Flowers;
     }
 
-    public void setProducts(Set<Product> products) {
-        Products = products;
+    public void setFlowers(Set<Flower> flowers) {
+        Flowers = flowers;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Set<Plant> getPlants() {
+        return Plants;
+    }
+
+    public void setPlants(Set<Plant> plants) {
+        Plants = plants;
     }
 }
 

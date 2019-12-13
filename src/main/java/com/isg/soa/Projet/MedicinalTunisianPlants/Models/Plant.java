@@ -8,7 +8,16 @@ import javax.validation.constraints.NotNull;
 import java.util.*;
 @Entity
 @Table(name="Plant_table")
-public class Plant extends Product {
+public class Plant {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long Id;
+    @NotNull
+    private String Name;
+    @NotNull
+    private double Price;
+    @ManyToMany(mappedBy = "Plants")
+    private Set<Order>Orders = new HashSet<>();
     private String Origin;
     private String Description;
     @OneToMany(mappedBy = "plant",cascade = CascadeType.ALL)
@@ -26,18 +35,52 @@ public class Plant extends Product {
     private Flower flower;
     private Color Color ;
 
-    public Plant(@NotNull String name, @NotNull double price, Set<Order> orders) {
-        super(name, price, orders);
-    }
+    public Plant( @NotNull String name, @NotNull double price, Set<Order> orders, String origin, String description, Set<Photo> photos, Set<Use> usesOfPlant, Flower flower, com.isg.soa.Projet.MedicinalTunisianPlants.Models.Color color) {
 
-    public Plant(@NotNull String name, @NotNull double price, Set<Order> orders, String origin, String description, Set<Photo> photos, Set<Use> usesOfPlant, Flower flower, com.isg.soa.Projet.MedicinalTunisianPlants.Models.Color color) {
-        super(name, price, orders);
+        Name = name;
+        Price = price;
+        Orders = orders;
         Origin = origin;
         Description = description;
         Photos = photos;
         UsesOfPlant = usesOfPlant;
         this.flower = flower;
         Color = color;
+    }
+
+    public Plant() {
+    }
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(double price) {
+        Price = price;
+    }
+
+    public Set<Order> getOrders() {
+        return Orders;
+    }
+
+    public void setOrders(Set<Order> orders) {
+        Orders = orders;
     }
 
     public String getOrigin() {

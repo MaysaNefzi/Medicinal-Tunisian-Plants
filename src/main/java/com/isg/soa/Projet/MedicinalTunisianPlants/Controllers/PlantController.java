@@ -13,10 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -86,5 +83,17 @@ public class PlantController {
         response.put("deleted", Boolean.TRUE);
 
         return response;
+    }
+    @DeleteMapping("/removePlantByName/{Name}")
+    public ResponseEntity<?> deletePlantByName(@PathVariable("Name") String Name) {
+        log.info("Request for removing product {}", Name);
+        List<Plant> lstplants = P_repo.findAll().stream()
+                .filter(x -> x.getName().equals(Name))
+                .collect(Collectors.toList());
+
+        for (Plant p : lstplants)
+            P_repo.deleteById(p.getId());
+        return ResponseEntity.ok().build();
+
     }
 }
