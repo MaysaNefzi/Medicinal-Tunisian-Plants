@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
-@CrossOrigin(origins = "http://localhost:")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/customer")
 public class CustomerController {
